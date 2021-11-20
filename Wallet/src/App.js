@@ -42,21 +42,22 @@ const App =  () => {
   
   
   // This function gets the account address from injected web3 instance i.e. Metamask address
-  // acc[0] - is the first account from the connected wallet 
+  // accounts[0] - is the first account from the connected wallet 
   const getAddress = async () => {
     const web3AddObj = new Web3(window.ethereum)
-    web3AddObj.eth.getAccounts().then(acc =>{
-      let waltAddrMsg = "Current wallet address is " + acc[0]
+    web3AddObj.eth.getAccounts().then(accounts =>{
+      let waltAddrMsg = "Current wallet address is " + accounts[0]
       setWalletAddress(waltAddrMsg)
     })
     //console.log("Wallet address is ",walletAddress)
   }
   
 
+  // This function gets the balance of the first and the only address ETHER balance 
   const getBalance = async () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     const webObj = new Web3(window.ethereum)
-    webObj.eth.getBalance(accounts.toString(), function(err, result) {
+    webObj.eth.getBalance(accounts[0].toString(), function(err, result) {
       if (err) {
         console.log(err)
       } else {
