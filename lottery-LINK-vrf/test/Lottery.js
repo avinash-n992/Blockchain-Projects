@@ -37,7 +37,7 @@ describe('LotterySystem Contract', () =>{
         });
 
         it('Should let Player join with exact ether amount', async ()=>{
-            const correctetherAmount = ethers.utils.parseEther("0.3");
+            const correctetherAmount = ethers.utils.parseEther("0.1");
             const joinLottery = await lottery.join(player1.address, {value:correctetherAmount});
             expect(joinLottery);
             const playerinfo = await lottery.players(0);
