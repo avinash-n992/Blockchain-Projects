@@ -1,8 +1,4 @@
 const {expect} = require('chai');
-// var chai = require('chai');
-// chai.use(require('chai-bignumber')());
-//const { ethers } = require('ethers');
-
 
 describe('LotterySystem Contract', () =>{
     let LotterySC;
@@ -109,16 +105,13 @@ describe('LotterySystem Contract', () =>{
             // Add players
             const correctetherAmount = ethers.utils.parseEther("0.3");
             const player1joinLottery = await lottery.join(player1.address, {value:correctetherAmount});
-            //expect(player1joinLottery);
             const player1info = await lottery.players(0);
 
             const player2joinLottery = await lottery.join(player2.address, {value:correctetherAmount});
-            //expect(player2joinLottery);
             const player2info = await lottery.players(1);
 
             const player3joinLottery = await lottery.join(player3.address, {value:correctetherAmount});
             const player3info = await lottery.players(2);
-            //expect(player3joinLottery)
 
             expect(player1info).to.equal(player1.address.toString());
             expect(player2info).to.equal(player2.address.toString());
