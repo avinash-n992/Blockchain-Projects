@@ -27,7 +27,7 @@ describe('LotterySystem Contract', () =>{
 
     describe('Join lottery',() =>{
         it('Should not let owner join the lottery', async ()=>{
-            const correctetherAmount = ethers.utils.parseEther("0.3");
+            const correctetherAmount = ethers.utils.parseEther("0.1");
 
             try{
                 const joinLottery = await lottery.join(lotteryowner.address, {value:correctetherAmount});
@@ -58,7 +58,7 @@ describe('LotterySystem Contract', () =>{
 
         it('Should let multiple players join the lottery', async ()=>{
             // Join Player 1 in the lottery
-            const correctetherAmount = ethers.utils.parseEther("0.3");
+            const correctetherAmount = ethers.utils.parseEther("0.1");
             const player1joinLottery = await lottery.join(player1.address, {value:correctetherAmount});
             expect(player1joinLottery);
             const player1info = await lottery.players(0);
@@ -76,7 +76,7 @@ describe('LotterySystem Contract', () =>{
             await network.provider.send("evm_increaseTime", [3600]);
             await network.provider.send("evm_mine");
 
-            const correctetherAmount = ethers.utils.parseEther("0.3");
+            const correctetherAmount = ethers.utils.parseEther("0.1");
             try{
                 const player1joinLottery = await lottery.join(player1.address, {value:correctetherAmount});
                 expect(player1joinLottery).to.be.reverted;
@@ -84,7 +84,7 @@ describe('LotterySystem Contract', () =>{
         });
 
         it('Should not let player join twice', async ()=>{
-            const correctetherAmount = ethers.utils.parseEther("0.3");
+            const correctetherAmount = ethers.utils.parseEther("0.1");
             const player1JoinLottery = await lottery.join(player1.address, {value:correctetherAmount});
             expect(player1JoinLottery);
             const player1info = await lottery.players(0);
@@ -103,7 +103,7 @@ describe('LotterySystem Contract', () =>{
     describe('Pick winner ',() =>{
         it('Should let only owner pick the winner', async ()=>{
             // Add players
-            const correctetherAmount = ethers.utils.parseEther("0.3");
+            const correctetherAmount = ethers.utils.parseEther("0.1");
             const player1joinLottery = await lottery.join(player1.address, {value:correctetherAmount});
             const player1info = await lottery.players(0);
 
@@ -129,7 +129,7 @@ describe('LotterySystem Contract', () =>{
 
         it('Should not let player pick winner', async ()=>{
             // Add players
-            const correctetherAmount = ethers.utils.parseEther("0.3");
+            const correctetherAmount = ethers.utils.parseEther("0.1");
             const player1joinLottery = await lottery.join(player1.address, {value:correctetherAmount});
             const player1info = await lottery.players(0);
 

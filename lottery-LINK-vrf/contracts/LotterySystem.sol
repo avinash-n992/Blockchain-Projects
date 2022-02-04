@@ -58,7 +58,7 @@ contract LotterySystem is VRFConsumerBase {
     function join(address _player) public payable isPlayDuplicate(_player){
         require(_player != lotteryowner,'Onwer cannot be player');
         require(block.timestamp < expiry,'Lottery join time has expired');
-        require(msg.value == 0.3 ether,'You need to deposit 0.3 ether to join');
+        require(msg.value == 0.1 ether,'You need to deposit 0.1 ether to join');
         players.push(_player);
     }
 
