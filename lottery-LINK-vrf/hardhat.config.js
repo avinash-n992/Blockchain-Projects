@@ -13,7 +13,7 @@ module.exports = {
   solidity: "0.8.0",
   networks: {
     kovan: {
-      url: `https://eth-ropsten.alchemyapi.io/v2/${secrets.projectId}`,
+      url: `https://kovan.infura.io/v3/${secrets.projectId}`,
       accounts: {mnemonic: `${secrets.mnemonic}`}
     }
   }
